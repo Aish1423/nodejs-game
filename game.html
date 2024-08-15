@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1{
+            font-size: 50px;
+        }
+        .c1{
+            margin-left: 270px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+        }
+        input {
+            font-size: 30px;
+            width: 80px;
+            text-align: center;
+            margin: 20px;
+            padding: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <h1 align="center ">Guess the Movie</h1>
+    <ul class="c1">
+        <li class="c1">its a horror movie</li>
+        <li class="c1">Its bollywood movie</li>
+        <li class="c1">It released in 2008</li>
+        <li class="c1">starring adah Sharma</li>
+
+    </ul>
+    <div class="images">
+        <img src="bomb.png" alt="bomb1">
+        <img src="bomb.png" alt="bomb2">
+        <img src="bomb.png" alt="bomb3">
+        <img src="bomb.png" alt="bomb4">
+    </div>
+    <div>
+        <input type="text" id="char1" maxlength="1" oninput="focusNextInput('char1', 'char2')">
+        <input type="text" id="char2" maxlength="1" oninput="focusNextInput('char2', 'char3')">
+        <input type="text" id="char3" maxlength="1" oninput="focusNextInput('char3', 'char4')">
+        <input type="text" id="char4" maxlength="1" oninput="checkGuess()">
+    </div>
+    <p id="result"></p>
+
+
+
+    <script src="game.js"></script>
+</body>
+</html>

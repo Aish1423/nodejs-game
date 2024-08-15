@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Movie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+        input {
+            font-size: 24px;
+            width: 50px;
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+        }
+        .hint {
+            text-align: left;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Movie</h1>
+    <div class="hint">
+        <p>• It's a horror movie</p>
+        <p>• It's a Bollywood movie</p>
+        <p>• It was released in 2008</p>
+        <p>• Starring Adah Sharma</p>
+    </div>
+    <div id="images">
+        <img id="bomb1" src="bomb.png" alt="bomb1">
+        <img id="bomb2" src="bomb.png" alt="bomb2">
+        <img id="bomb3" src="bomb.png" alt="bomb3">
+    </div>
+    <div>
+        <input type="text" id="char1" maxlength="1" oninput="focusNextInput('char1', 'char2')">
+        <input type="text" id="char2" maxlength="1" oninput="focusNextInput('char2', 'char3')">
+        <input type="text" id="char3" maxlength="1" oninput="focusNextInput('char3', 'char4')">
+        <input type="text" id="char4" maxlength="1" oninput="checkGuess()">
+    </div>
+    <p id="result"></p>
+
+    <script>
+        const correctAnswer = "1920";
+
+        function focusNextInput(currentId, nextId) {
+            if (document.getElementById(currentId).value.length === 1) {
+                document.getElementById(nextId).focus();
+            }
+        }
+
+        function checkGuess() {
+            const char1 = document.getElementById('char1').value;
+            const char2 = document.getElementById('char2').value;
+            const char3 = document.getElementById('char3').value;
+            const char4 = document.getElementById('char4').value;
+            const userGuess = char1 + char2 + char3 + char4;
+
+            const result = document.getElementById('result');
+
+            if (userGuess.length === 4) {
+                if (userGuess === correctAnswer) {
+                    result.textContent = "Correct! The movie is 1920";
+                } else {
+                    result.textContent = "Wrong! Try again.";
+                    changeBombImages();
+                }
+            }
+        }
+
+        function changeBombImages() {
+            document.getElementById('bomb1').src = "bomb2.png";
+            document.getElementById('bomb2').src = "bomb2.png";
+            document.getElementById('bomb3').src = "bomb2.png";
+        }
+    </script>
+</body>
+</html>
